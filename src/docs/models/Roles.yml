@@ -1,0 +1,27 @@
+components:
+  schemas:
+    Roles:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        name:
+          type: string
+    PagedRoles:
+      type: object
+      properties:
+        page:
+          type: number
+        rowsPerPage:
+          type: number
+        rowsNumber:
+          type: number
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Roles'
+        sortBy:
+          type: string
+        descending:
+          type: boolean
