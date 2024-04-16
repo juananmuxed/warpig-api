@@ -8,11 +8,18 @@ import { ERRORS } from '@config/data/Errors';
 import { TypedRequest } from '@db/models/common/ExpressTypes';
 import { Roles } from '@db/models/Roles';
 import { Pagination } from '@models/Pagination';
+import { Teams } from '@db/models/Teams';
 
-const include = {
-  model: Roles,
-  as: 'role',
-};
+const include = [
+  {
+    model: Roles,
+    as: 'role',
+  },
+  {
+    model: Teams,
+    as: 'team',
+  },
+];
 
 export class UsersController {
   getUsers = async (_req: Request, res: Response, next: NextFunction) => {

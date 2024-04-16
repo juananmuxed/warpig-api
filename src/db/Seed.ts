@@ -22,6 +22,15 @@ export const seedDatabase = async () => {
       name: 'editor',
     },
   });
+  await Roles.findOrCreate({
+    where: {
+      id: 3,
+    },
+    defaults: {
+      id: 3,
+      name: 'user',
+    },
+  });
 
   await Users.findOrCreate({
     where: {

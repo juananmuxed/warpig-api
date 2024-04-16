@@ -16,7 +16,7 @@ export const useSwaggerOptions = () => {
       },
       servers: [
         {
-          url: 'http://localhost:3000/api',
+          url: `http://${process.env.API_HOST}:${process.env.API_PORT}/api`,
           description: 'Development server',
         },
       ],
@@ -25,8 +25,8 @@ export const useSwaggerOptions = () => {
   };
   if (process.env.NODE_ENV === 'production' && swaggerOptions.definition) {
     swaggerOptions.definition.servers = [{
-      url: 'https://example.com/api',
-      description: 'Template TS API',
+      url: 'https://warpig.muxed.dev/api',
+      description: 'Warpig API',
     }];
   }
   return swaggerOptions;
