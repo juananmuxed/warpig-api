@@ -23,7 +23,7 @@ export const useLoggerServer = () => {
       }${colors.cyan
       }${url
       }${colors.reset
-      }${colors.green}`,
+      }${colors.yellow}`,
     );
   };
 
