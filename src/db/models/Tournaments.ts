@@ -7,6 +7,7 @@ import { Countries } from './Countries';
 import { States } from './States';
 import { Games } from './Games';
 import { Expansions } from './Expansions';
+import { Criterions } from './Criterion';
 
 export interface TournamentItem extends Record<string, unknown> {
   id: number;
@@ -58,6 +59,30 @@ export const ExpansionsTournaments = db.define(
 
 Tournaments.belongsToMany(Expansions, { through: ExpansionsTournaments, as: 'expansions' });
 Expansions.belongsToMany(Tournaments, { through: ExpansionsTournaments, as: 'tournaments' });
+
+export const CriterionsTournaments = db.define(
+  'criterions_tournaments',
+  {
+    criterionId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: Criterions,
+        key: 'id',
+      },
+    },
+    tournamentId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: Tournaments,
+        key: 'id',
+      },
+    },
+  },
+  { underscored: true, timestamps: false },
+);
+
+Tournaments.belongsToMany(Criterions, { through: CriterionsTournaments, as: 'criterions' });
+Criterions.belongsToMany(Tournaments, { through: CriterionsTournaments, as: 'tournaments' });
 
 Tournaments.belongsTo(Games, { foreignKey: 'gameId', as: 'game' });
 Games.hasMany(Tournaments, { as: 'tournaments' });

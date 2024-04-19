@@ -31,6 +31,3 @@ export const Criterions = db.define<CriterionModel>(
   },
   { underscored: true, timestamps: false },
 );
-
-Criterions.belongsTo(Tournaments, { foreignKey: 'tournamentId', as: 'tournament' });
-Tournaments.hasMany(Criterions, { as: 'criterions' });
