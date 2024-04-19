@@ -7,25 +7,23 @@ export const useLoggerServer = () => {
   const serverStart = (server: ServerUrl) => {
     console.log(
       `${colors.green
-      }💻 Server Start ===> ${
-        colors.reset
+      }💻 Server Start ===> ${colors.reset
       }${colors.green
       }${server.host
       }${colors.reset
       }${colors.magenta
-      }:${
-        server.port
+      }:${server.port
       }${colors.reset}`,
     );
   };
 
   const dbConnected = (url: string) => {
     console.log(
-      `${colors.green
-      }💡 DB Connected ===> ${
-        colors.reset
+      `${colors.green}💡 DB Connected ===> ${colors.reset
       }${colors.cyan
-      }${url}`,
+      }${url
+      }${colors.reset
+      }${colors.yellow}`,
     );
   };
 
