@@ -1,3 +1,4 @@
+import { useLoggerServer } from '@config/UseLoggerServer';
 import { Armies } from '@db/models/Armies';
 import { Countries } from '@db/models/Countries';
 import { Criterions } from '@db/models/Criterion';
@@ -14,27 +15,34 @@ import { Teams } from '@db/models/Teams';
 import { CriterionsTournaments, ExpansionsTournaments, TournamentTypes, Tournaments } from '@db/models/Tournaments';
 import { Users } from '@db/models/Users';
 
+const log = useLoggerServer();
+
 const dropAll = async () => {
-  await ParticipantsPairingsBlue.drop();
-  await ParticipantsPairingsRed.drop();
-  await CriterionPairingsRed.drop();
-  await CriterionPairingsBlue.drop();
-  await ExpansionsTournaments.drop();
-  await CriterionsTournaments.drop();
-  await Participants.drop();
-  await Users.drop();
-  await Criterions.drop();
-  await Pairings.drop();
-  await Rounds.drop();
-  await Armies.drop();
-  await Expansions.drop();
-  await Tournaments.drop();
-  await TournamentTypes.drop();
-  await States.drop();
-  await Countries.drop();
-  await Games.drop();
-  await Teams.drop();
-  await Roles.drop();
+  try {
+    await ParticipantsPairingsBlue.drop();
+    await ParticipantsPairingsRed.drop();
+    await CriterionPairingsRed.drop();
+    await CriterionPairingsBlue.drop();
+    await ExpansionsTournaments.drop();
+    await CriterionsTournaments.drop();
+    await Participants.drop();
+    await Users.drop();
+    await Criterions.drop();
+    await Pairings.drop();
+    await Rounds.drop();
+    await Armies.drop();
+    await Expansions.drop();
+    await Tournaments.drop();
+    await TournamentTypes.drop();
+    await States.drop();
+    await Countries.drop();
+    await Games.drop();
+    await Teams.drop();
+    await Roles.drop();
+    log.simpleMessage('🗑️  DB dropped correctly')
+  } catch (error) {
+    throw new Error(error as string);
+  }
 };
 
 dropAll();
