@@ -6,9 +6,9 @@ export const useSwaggerOptions = () => {
       openapi: '3.0.3',
       info: {
         version: '1.0.0',
-        title: 'Template TS API',
+        title: 'Warpig API',
         termsOfService: 'http://swagger.io/terms/',
-        description: 'Template TS API',
+        description: 'Warpig API',
         contact: {
           name: 'MuXeD',
           url: 'https://github.com/juananmuxed',
