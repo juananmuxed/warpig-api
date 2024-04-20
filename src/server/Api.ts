@@ -23,16 +23,16 @@ export class Server {
     this.app = express();
     this.port = process.env.API_PORT || 3000;
     this.host = process.env.API_HOST || 'localhost';
+  }
 
+  async init() {
     this.dbConnection();
     this.middleWares();
     this.routes();
     this.swagger();
     this.errorHandler();
-    this.syncDatabase()
-      .then(() => {
-        this.seedDatabase();
-      });
+    await this.syncDatabase()
+    this.seedDatabase();
   }
 
   async dbConnection() {
