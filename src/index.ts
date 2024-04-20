@@ -7,4 +7,3 @@ configDotenv();
 const app = new Server();
 
 app.init();
-app.listen();

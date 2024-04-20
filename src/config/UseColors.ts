@@ -19,7 +19,7 @@ const LogColorList = [
   'carriage',
 ] as const;
 
-type LogColor = typeof LogColorList[number];
+export type LogColor = typeof LogColorList[number];
 
 export const useColors = () => {
   const colors: Record<LogColor, string> = {

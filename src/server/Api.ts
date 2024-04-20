@@ -31,8 +31,9 @@ export class Server {
     this.routes();
     this.swagger();
     this.errorHandler();
-    await this.syncDatabase()
-    this.seedDatabase();
+    await this.syncDatabase();
+    await this.seedDatabase();
+    this.listen();
   }
 
   async dbConnection() {
@@ -55,11 +56,21 @@ export class Server {
   }
 
   async syncDatabase() {
-    await syncDatabase();
+    try {
+      await syncDatabase();
+      log.simpleMessage(`🗃️  Database sync`, 'magenta');
+    } catch (error) {
+      throw new Error(error as string);
+    }
   }
 
   async seedDatabase() {
-    await seedDatabase();
+    try {
+      await seedDatabase();
+      log.simpleMessage(`🌱 Database initial seed`, 'yellow');
+    } catch (error) {
+      throw new Error(error as string);
+    }
   }
 
   swagger() {
