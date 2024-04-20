@@ -21,13 +21,13 @@ export const syncDatabase = async () => {
   await Countries.sync();
   await States.sync();
   await TournamentTypes.sync();
+  await Users.sync();
   await Tournaments.sync();
   await Expansions.sync();
   await Armies.sync();
   await Rounds.sync();
   await Pairings.sync();
   await Criterions.sync();
-  await Users.sync();
   await Participants.sync();
   await ParticipantsPairingsRed.sync();
   await ParticipantsPairingsBlue.sync();

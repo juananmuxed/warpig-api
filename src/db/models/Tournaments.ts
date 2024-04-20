@@ -9,6 +9,7 @@ import { Games } from './Games';
 import { Expansions } from './Expansions';
 import { Criterions } from './Criterion';
 import { TOURNAMENT_TYPES } from '@db/data/TournamentTypes';
+import { Users } from './Users';
 
 export type TournamentTypesCodes = typeof TOURNAMENT_TYPES[number];
 
@@ -123,3 +124,6 @@ Countries.hasMany(Tournaments, { as: 'tournaments' });
 
 Tournaments.belongsTo(States, { foreignKey: 'stateId', as: 'state' });
 States.hasMany(Tournaments, { as: 'tournaments' });
+
+Tournaments.belongsTo(Users, { foreignKey: 'userId', as: 'creator' });
+Users.hasMany(Tournaments, { as: 'tournaments' });

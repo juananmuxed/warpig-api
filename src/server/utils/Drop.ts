@@ -26,13 +26,13 @@ const dropAll = async () => {
     await ExpansionsTournaments.drop();
     await CriterionsTournaments.drop();
     await Participants.drop();
-    await Users.drop();
     await Criterions.drop();
     await Pairings.drop();
     await Rounds.drop();
     await Armies.drop();
     await Expansions.drop();
     await Tournaments.drop();
+    await Users.drop();
     await TournamentTypes.drop();
     await States.drop();
     await Countries.drop();
