@@ -5,7 +5,7 @@ import { Expansions } from './models/Expansions';
 import { Armies } from './models/Armies';
 import { Countries } from './models/Countries';
 import { States } from './models/States';
-import { CriterionsTournaments, ExpansionsTournaments, Tournaments } from './models/Tournaments';
+import { CriterionsTournaments, ExpansionsTournaments, TournamentTypes, Tournaments } from './models/Tournaments';
 import { Rounds } from './models/Rounds';
 import { Teams } from './models/Teams';
 import {
@@ -20,6 +20,7 @@ export const syncDatabase = async () => {
   await Games.sync();
   await Countries.sync();
   await States.sync();
+  await TournamentTypes.sync();
   await Tournaments.sync();
   await Expansions.sync();
   await Armies.sync();

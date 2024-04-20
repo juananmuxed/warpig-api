@@ -1,0 +1,8 @@
+export const TOURNAMENT_TYPES = [
+  'SINGLE_ELIMINATION',
+  'DOUBLE_ELIMINATION',
+  'SWISS',
+  'ROUND_ROBIN',
+  'FREE_ALL',
+  'LEADER_BOARD',
+] as const;

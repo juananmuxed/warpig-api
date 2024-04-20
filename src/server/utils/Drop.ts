@@ -11,7 +11,7 @@ import { Roles } from '@db/models/Roles';
 import { Rounds } from '@db/models/Rounds';
 import { States } from '@db/models/States';
 import { Teams } from '@db/models/Teams';
-import { CriterionsTournaments, ExpansionsTournaments, Tournaments } from '@db/models/Tournaments';
+import { CriterionsTournaments, ExpansionsTournaments, TournamentTypes, Tournaments } from '@db/models/Tournaments';
 import { Users } from '@db/models/Users';
 
 const dropAll = async () => {
@@ -29,6 +29,7 @@ const dropAll = async () => {
   await Armies.drop();
   await Expansions.drop();
   await Tournaments.drop();
+  await TournamentTypes.drop();
   await States.drop();
   await Countries.drop();
   await Games.drop();

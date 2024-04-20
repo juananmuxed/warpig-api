@@ -8,6 +8,9 @@ import { States } from './States';
 import { Games } from './Games';
 import { Expansions } from './Expansions';
 import { Criterions } from './Criterion';
+import { TOURNAMENT_TYPES } from '@db/data/TournamentTypes';
+
+export type TournamentTypesCodes = typeof TOURNAMENT_TYPES[number];
 
 export interface TournamentItem extends Record<string, unknown> {
   id: number;
@@ -36,6 +39,31 @@ export const Tournaments = db.define<TournamentModel>(
   { underscored: true, timestamps: false },
 );
 
+export interface TournamentTypeItem extends Record<string, unknown> {
+  id: number;
+  name: string;
+  code: TournamentTypesCodes;
+}
+
+export interface TournamentTypeModel extends Model<InferAttributes<TournamentTypeModel>, InferCreationAttributes<TournamentTypeModel>>, TournamentTypeItem {}
+
+export const TournamentTypes = db.define<TournamentTypeModel>(
+  'tournament_types',
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+    },
+    name: {
+      type: DataTypes.STRING(100),
+      unique: true,
+    },
+    code: {
+      type: DataTypes.STRING(40),
+    },
+  },
+  { underscored: true, timestamps: false },
+);
 export const ExpansionsTournaments = db.define(
   'expansions_tournaments',
   {
@@ -86,6 +114,9 @@ Criterions.belongsToMany(Tournaments, { through: CriterionsTournaments, as: 'tou
 
 Tournaments.belongsTo(Games, { foreignKey: 'gameId', as: 'game' });
 Games.hasMany(Tournaments, { as: 'tournaments' });
+
+Tournaments.belongsTo(TournamentTypes, { foreignKey: 'typeId', as: 'type' });
+TournamentTypes.hasMany(Tournaments, { as: 'tournaments' });
 
 Tournaments.belongsTo(Countries, { foreignKey: 'countryId', as: 'country' });
 Countries.hasMany(Tournaments, { as: 'tournaments' });
