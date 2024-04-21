@@ -9,6 +9,7 @@ import { UserItem, Users } from '@db/models/Users';
 import { TypedRequest } from '@db/models/common/ExpressTypes';
 import { Roles } from '@db/models/Roles';
 import { ERRORS } from '@config/data/Errors';
+import { object } from 'utils/Objects';
 
 const authentication = new Authentication();
 
@@ -51,6 +52,8 @@ export class AuthenticationController {
     const { body } = req;
 
     try {
+      if (object.isEmpty(body)) next(new NotFoundError(ERRORS.NOT_FOUND('body')));
+
       const user = await Users.findOne({ where: { email: body.email } });
 
       if (!user) next(new NotFoundError(ERRORS.NOT_FOUND('User')));
