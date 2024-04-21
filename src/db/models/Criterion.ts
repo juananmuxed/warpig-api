@@ -3,7 +3,6 @@ import {
 } from 'sequelize';
 
 import { db } from '@db/Connection';
-import { Tournaments } from './Tournaments';
 
 export interface CriterionItem extends Record<string, unknown> {
   id: number;

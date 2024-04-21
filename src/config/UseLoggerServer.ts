@@ -18,11 +18,11 @@ export const useLoggerServer = () => {
     );
   };
 
-const simpleMessage = (message: string, color: LogColor = 'green' ) => {
-  console.log(
-    `${colors.reset}${colors[color]}${message}${colors.reset}`
-  )
-}
+  const simpleMessage = (message: string, color: LogColor = 'green') => {
+    console.log(
+      `${colors.reset}${colors[color]}${message}${colors.reset}`,
+    );
+  };
 
   return {
     serverStart,

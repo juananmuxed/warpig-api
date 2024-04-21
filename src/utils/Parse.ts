@@ -1,6 +1,6 @@
 const kebabCase = (text?: string): string => text
   ?.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-  ?.map((x) => x.toLowerCase())
+  ?.map((substring) => substring.toLowerCase())
   .join('-') || '';
 
 function isUpperCase(text?: string) {
@@ -21,7 +21,7 @@ const camelCase = (text?: string): string => {
 const pascalCase = (text?: string): string => text?.replace(/[-_]+/g, ' ')
   .replace(/[^\w\s]/g, '')
   .replace(/\s+(.)(\w*)/g, (_$1, $2, $3) => `${$2.toUpperCase() + $3}`)
-  .replace(/^\w/, (s) => s.toUpperCase()) || '';
+  .replace(/^\w/, (substring) => substring.toUpperCase()) || '';
 
 const normalizeLowerString = (string: string | number): string => string.toString().normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
 

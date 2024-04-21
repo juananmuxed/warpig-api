@@ -5,7 +5,9 @@ import { Expansions } from './models/Expansions';
 import { Armies } from './models/Armies';
 import { Countries } from './models/Countries';
 import { States } from './models/States';
-import { CriterionsTournaments, ExpansionsTournaments, TournamentTypes, Tournaments } from './models/Tournaments';
+import {
+  CriterionsTournaments, ExpansionsTournaments, TournamentTypes, Tournaments,
+} from './models/Tournaments';
 import { Rounds } from './models/Rounds';
 import { Teams } from './models/Teams';
 import {

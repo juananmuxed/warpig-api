@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon - exec 'ts-node' src/index.ts",
-    "lint": "eslint . - ext .ts",
+    "lint": "eslint . --ext .ts",
     "build": "tsc",
     "db:drop": "ts-node src/server/utils/Drop.ts",
     "docker:stop": "docker stop template-api-container || true",
