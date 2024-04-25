@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
 import { ValidationError } from 'sequelize';
-
 import {
   AuthError, InternalError, InvalidLogin, NotFoundError,
 } from '@models/Errors';

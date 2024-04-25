@@ -1,7 +1,6 @@
 import express, { Application } from 'express';
 import swaggerUI from 'swagger-ui-express';
 import cors from 'cors';
-
 import { useLoggerServer } from '@config/UseLoggerServer';
 import { db, dbHost, dbTable } from '@db/Connection';
 import { apiPaths, setRoutes } from '@routes/Main';
@@ -58,7 +57,7 @@ export class Server {
   async syncDatabase() {
     try {
       await syncDatabase();
-      log.simpleMessage(`🗃️  Database sync`, 'magenta');
+      log.simpleMessage('🗃️  Database sync', 'magenta');
     } catch (error) {
       throw new Error(error as string);
     }
@@ -67,7 +66,7 @@ export class Server {
   async seedDatabase() {
     try {
       await seedDatabase();
-      log.simpleMessage(`🌱 Database initial seed`, 'yellow');
+      log.simpleMessage('🌱 Database initial seed', 'yellow');
     } catch (error) {
       throw new Error(error as string);
     }

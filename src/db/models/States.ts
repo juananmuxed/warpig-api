@@ -1,8 +1,8 @@
 import {
   DataTypes, InferAttributes, InferCreationAttributes, Model,
 } from 'sequelize';
-
 import { db } from '@db/Connection';
+
 import { Countries } from './Countries';
 
 export interface StateItem extends Record<string, unknown> {

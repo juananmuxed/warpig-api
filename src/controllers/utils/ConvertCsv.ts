@@ -1,5 +1,8 @@
 import { isJson } from './Is';
 
+export type BufferEncoding = 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' | 'base64' | 'latin1' | 'binary' | 'hex';
+
+// eslint-disable-next-line no-undef
 export const convertCsv = <T extends Record<string, unknown>>(csvFile: Express.Multer.File, separator = ';', enterChar = '\r\n') => {
   const convert = (
     from?: BufferEncoding,
@@ -18,7 +21,7 @@ export const convertCsv = <T extends Record<string, unknown>>(csvFile: Express.M
     const cells = row.split(separator);
     const object: Record<string, unknown> = {};
     cells.forEach((cell, index) => {
-      const formattedCell = isJson(cell) ? JSON.parse(cell) : cell;
+      const formattedCell = (isJson(cell) ? JSON.parse(cell) : cell) as string;
       object[cols[index]] = cell ? formattedCell : null;
     });
 

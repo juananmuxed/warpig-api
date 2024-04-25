@@ -12,7 +12,9 @@ import { Roles } from '@db/models/Roles';
 import { Rounds } from '@db/models/Rounds';
 import { States } from '@db/models/States';
 import { Teams } from '@db/models/Teams';
-import { CriterionsTournaments, ExpansionsTournaments, TournamentTypes, Tournaments } from '@db/models/Tournaments';
+import {
+  CriterionsTournaments, ExpansionsTournaments, TournamentTypes, Tournaments,
+} from '@db/models/Tournaments';
 import { Users } from '@db/models/Users';
 
 const log = useLoggerServer();
@@ -39,7 +41,7 @@ const dropAll = async () => {
     await Games.drop();
     await Teams.drop();
     await Roles.drop();
-    log.simpleMessage('🗑️  DB dropped correctly')
+    log.simpleMessage('🗑️  DB dropped correctly');
   } catch (error) {
     throw new Error(error as string);
   }

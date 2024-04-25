@@ -1,5 +1,4 @@
 import { Application } from 'express';
-
 import usersRoutes from '@routes/users/Users';
 import rolesRoutes from '@routes/users/Roles';
 import authenticationRoutes from '@routes/auth/Auth';

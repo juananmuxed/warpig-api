@@ -1,24 +1,24 @@
 import { Op } from 'sequelize';
-
 import { Roles } from '@db/models/Roles';
 import { Users } from '@db/models/Users';
 import { TOURNAMENT_TYPES } from '@db/data/TournamentTypes';
 import { TournamentTypes } from '@db/models/Tournaments';
 import { parse } from 'utils/Parse';
+
 import { ROLES } from './data/Roles';
 
 export const seedDatabase = async () => {
   ROLES.forEach(async (role, index) => {
-    await Roles.findOrCreate( {
+    await Roles.findOrCreate({
       where: {
         id: index,
       },
       defaults: {
         id: index,
-        name: parse.camelCase(role)
-      }
-    })
-  })
+        name: parse.camelCase(role),
+      },
+    });
+  });
 
   await Users.findOrCreate({
     where: {
@@ -38,13 +38,13 @@ export const seedDatabase = async () => {
   TOURNAMENT_TYPES.forEach(async (type, index) => {
     await TournamentTypes.findOrCreate({
       where: {
-        id: index
+        id: index,
       },
       defaults: {
         id: index,
-        name:  parse.camelCase(type),
+        name: parse.camelCase(type),
         code: type,
-      }
-    })
-  })
+      },
+    });
+  });
 };

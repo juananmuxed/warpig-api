@@ -1,8 +1,8 @@
 import {
   DataTypes, InferAttributes, InferCreationAttributes, Model,
 } from 'sequelize';
-
 import { db } from '@db/Connection';
+
 import { Tournaments } from './Tournaments';
 
 export interface CriterionItem extends Record<string, unknown> {

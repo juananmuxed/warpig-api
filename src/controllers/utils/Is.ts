@@ -9,11 +9,11 @@ export function isFalsy(value?: unknown): value is undefined | null {
 }
 
 export function isNullOrWhiteSpace(value?: unknown): value is undefined | null {
-  return isNullOrUndefined(value) || (`${value ?? ''}`).trim().length === 0;
+  return isNullOrUndefined(value) || (`${(value as string) || ''}`).trim().length === 0;
 }
 
 export function isNumber(value: unknown): value is number {
-  return (typeof value === 'number' && Number.isFinite(value)) || /^[-]?\d+(\.\d+)?$/.test(`${value}`);
+  return (typeof value === 'number' && Number.isFinite(value)) || /^[-]?\d+(\.\d+)?$/.test(value as string);
 }
 
 export function isObject(value: unknown): value is Record<string, any> {

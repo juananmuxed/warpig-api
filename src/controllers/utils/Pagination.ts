@@ -16,7 +16,7 @@ export const getOrder = (sortBy?: string, descending?: string) => {
   let _descending: OrderOption | undefined;
   if (descending === 'true') _descending = 'DESC';
   if (descending === 'false') _descending = 'ASC';
-  return [[sortBy, _descending as OrderOption] as [string, string]];
+  return [[sortBy, _descending] as [string, string]];
 };
 
 export const pagedResponse = <T>(

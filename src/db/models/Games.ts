@@ -1,8 +1,8 @@
 import {
   DataTypes, InferAttributes, InferCreationAttributes, Model,
 } from 'sequelize';
-
 import { db } from '@db/Connection';
+
 import { Expansions } from './Expansions';
 
 export interface GameItem extends Record<string, unknown> {
