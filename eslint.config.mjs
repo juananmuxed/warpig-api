@@ -137,7 +137,7 @@ export default tsEslint.config(
     },
   },
   {
-    files: ['**/*.js'],
+    files: ['**/*.js', '**/*.mjs'],
     ...tsEslint.configs.disableTypeChecked,
   },
 );
