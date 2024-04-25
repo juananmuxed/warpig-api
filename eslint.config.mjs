@@ -64,6 +64,7 @@ export default tsEslint.config(
         'packageDir ': '.',
       }],
       // BUG: Migration to 9.x temporal fix
+      // https://github.com/eslint/eslint/issues/13481
       // 'import/no-unresolved': 'error',
       'import/no-unresolved': 'off',
       'import/order': ['error', {
