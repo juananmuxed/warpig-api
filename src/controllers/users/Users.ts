@@ -1,13 +1,15 @@
 import { NextFunction, Request, Response } from 'express';
 import { ValidationError } from 'sequelize';
-import { getPagination, getOrder, pagedResponse } from '@controllers/utils/Pagination';
+import {
+  getPagination, getOrder, pagedResponse,
+} from '@controllers/utils/Pagination';
 import { UserItem, UserModel, Users } from '@db/models/Users';
 import { InternalError, NotFoundError } from '@models/Errors';
 import { ERRORS } from '@config/data/Errors';
 import { TypedRequest } from '@db/models/common/ExpressTypes';
 import { Roles } from '@db/models/Roles';
-import { Pagination } from '@models/Pagination';
 import { Teams } from '@db/models/Teams';
+import { PaginationQuery } from '@models/Pagination';
 
 const include = [
   {
@@ -33,13 +35,17 @@ export class UsersController {
     }
   };
 
-  getUsersPaginated = async (req: TypedRequest<Pagination>, res: Response, next: NextFunction) => {
+  getUsersPaginated = async (
+    req: Request<Record<string, never>, Record<string, never>, Record<string, never>, PaginationQuery>,
+    res: Response,
+    next: NextFunction,
+  ) => {
     const {
       page, rowsPerPage, sortBy, descending,
     } = req.query;
     try {
-      const pagination = getPagination(Number(page), Number(rowsPerPage));
-      const order = getOrder(sortBy?.toString(), descending?.toString());
+      const pagination = getPagination(page, rowsPerPage);
+      const order = getOrder(sortBy, descending, Users.getAttributes());
 
       const pagedUsers = await Users.findAndCountAll({
         include,

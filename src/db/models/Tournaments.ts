@@ -65,6 +65,7 @@ export const TournamentTypes = db.define<TournamentTypeModel>(
   },
   { underscored: true, timestamps: false },
 );
+
 export const ExpansionsTournaments = db.define(
   'expansions_tournaments',
   {

@@ -1,0 +1,44 @@
+components:
+  schemas:
+    Tournaments:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        name:
+          type: string
+        date:
+          type: string
+          format: date-time
+        typeId:
+          type: number
+        type:
+          $ref: '#/components/schemas/TournamentsTypes'
+    PagedTournaments:
+      type: object
+      properties:
+        page:
+          type: number
+        rowsPerPage:
+          type: number
+        rowsNumber:
+          type: number
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tournaments'
+        sortBy:
+          type: string
+        descending:
+          type: boolean
+    TournamentsTypes:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        name:
+          type: string
+        code:
+          type: string

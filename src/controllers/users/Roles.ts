@@ -1,11 +1,13 @@
 import { NextFunction, Request, Response } from 'express';
 import { ValidationError } from 'sequelize';
-import { getPagination, getOrder, pagedResponse } from '@controllers/utils/Pagination';
+import {
+  getPagination, getOrder, pagedResponse,
+} from '@controllers/utils/Pagination';
 import { RoleItem, RoleModel, Roles } from '@db/models/Roles';
 import { InternalError, NotFoundError } from '@models/Errors';
 import { ERRORS } from '@config/data/Errors';
 import { TypedRequest } from '@db/models/common/ExpressTypes';
-import { Pagination } from '@models/Pagination';
+import { PaginationQuery } from '@models/Pagination';
 
 export class RolesController {
   getRoles = async (_req: Request, res: Response, next: NextFunction) => {
@@ -18,14 +20,18 @@ export class RolesController {
     }
   };
 
-  getRolesPaginated = async (req: TypedRequest<Pagination>, res: Response, next: NextFunction) => {
+  getRolesPaginated = async (
+    req: Request<Record<string, never>, Record<string, never>, Record<string, never>, PaginationQuery>,
+    res: Response,
+    next: NextFunction,
+  ) => {
     const {
       page, rowsPerPage, sortBy, descending,
     } = req.query;
 
     try {
-      const pagination = getPagination(Number(page), Number(rowsPerPage));
-      const order = getOrder(sortBy?.toString(), descending?.toString());
+      const pagination = getPagination(page, rowsPerPage);
+      const order = getOrder(sortBy, descending, Roles.getAttributes());
 
       const pagedRoles = await Roles.findAndCountAll({
         ...pagination,

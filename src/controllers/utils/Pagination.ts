@@ -1,22 +1,20 @@
+import { OrderOption } from '@models/Pagination';
+
 import { DEFAULT_PAGINATION } from '../../config/data/DefaultPagination';
 
-const Orders = ['DESC', 'ASC'] as const;
+export const getPagination = (page?: string, rowsPerPage?: string) => {
+  const _page = +(page || DEFAULT_PAGINATION.PAGE);
+  const _rowsPerPage = +(rowsPerPage || DEFAULT_PAGINATION.SIZE);
+  const limit = _rowsPerPage;
+  const offset = (_page - 1) * limit;
 
-export type OrderOption = typeof Orders[number] | undefined;
-
-export const getPagination = (page?: number, rowsPerPage?: number) => {
-  const limit = (rowsPerPage === 0 || rowsPerPage === undefined) ? DEFAULT_PAGINATION.SIZE : rowsPerPage;
-  const offset = page ? (page - 1) * limit : (DEFAULT_PAGINATION.PAGE - 1);
-
-  return { limit, offset, page };
+  return { limit, offset, page: _page };
 };
 
-export const getOrder = (sortBy?: string, descending?: string) => {
-  if (!sortBy) return undefined;
-  let _descending: OrderOption | undefined;
-  if (descending === 'true') _descending = 'DESC';
-  if (descending === 'false') _descending = 'ASC';
-  return [[sortBy, _descending] as [string, string]];
+export const getOrder = (sortBy?: string, descending?: string, attributes?: Record<string, unknown>) => {
+  const _sortBy = sortBy && (attributes && sortBy in attributes) ? sortBy : DEFAULT_PAGINATION.ORDER_BY;
+  const _descending: OrderOption = descending === 'false' ? 'ASC' : DEFAULT_PAGINATION.DESCENDING;
+  return [[_sortBy, _descending] as [string, string]];
 };
 
 export const pagedResponse = <T>(
