@@ -1,7 +1,6 @@
 import express, { Application } from 'express';
 import swaggerUI from 'swagger-ui-express';
 import cors from 'cors';
-
 import { useLoggerServer } from '@config/UseLoggerServer';
 import { db, dbHost, dbTable } from '@db/Connection';
 import { apiPaths, setRoutes } from '@routes/Main';

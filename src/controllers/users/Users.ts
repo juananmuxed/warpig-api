@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
 import { ValidationError } from 'sequelize';
-
 import { getPagination, getOrder, pagedResponse } from '@controllers/utils/Pagination';
 import { UserItem, UserModel, Users } from '@db/models/Users';
 import { InternalError, NotFoundError } from '@models/Errors';

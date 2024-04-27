@@ -1,6 +1,6 @@
 const kebabCase = (text?: string): string => text
   ?.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-  ?.map((substring) => substring.toLowerCase())
+  ?.map((sub) => sub.toLowerCase())
   .join('-') || '';
 
 function isUpperCase(text?: string) {
@@ -9,7 +9,7 @@ function isUpperCase(text?: string) {
 
 const camelCase = (text?: string): string => {
   if (isUpperCase(text)) {
-    return text?.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (_m, chr) => chr?.toUpperCase()) || '';
+    return text?.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (_m, chr) => (chr as string)?.toUpperCase()) || '';
   }
 
   return text?.replace(/[-_]+/g, ' ')
@@ -20,8 +20,8 @@ const camelCase = (text?: string): string => {
 
 const pascalCase = (text?: string): string => text?.replace(/[-_]+/g, ' ')
   .replace(/[^\w\s]/g, '')
-  .replace(/\s+(.)(\w*)/g, (_$1, $2, $3) => `${$2.toUpperCase() + $3}`)
-  .replace(/^\w/, (substring) => substring.toUpperCase()) || '';
+  .replace(/\s+(.)(\w*)/g, (_$1, $2, $3) => `${($2 as string).toUpperCase() + $3}`)
+  .replace(/^\w/, (sub) => sub.toUpperCase()) || '';
 
 const normalizeLowerString = (string: string | number): string => string.toString().normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
 

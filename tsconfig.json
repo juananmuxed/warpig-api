@@ -52,7 +52,8 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
-    "src/**/*.tsx"
+    "src/**/*.tsx",
+    "eslint.config.mjs"
   ],
   "ts-node": {
     "require": [

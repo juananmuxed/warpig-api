@@ -1,14 +1,14 @@
 import {
   DataTypes, InferAttributes, InferCreationAttributes, Model,
 } from 'sequelize';
-
 import { db } from '@db/Connection';
+import { TOURNAMENT_TYPES } from '@db/data/TournamentTypes';
+
 import { Countries } from './Countries';
 import { States } from './States';
 import { Games } from './Games';
 import { Expansions } from './Expansions';
 import { Criterions } from './Criterion';
-import { TOURNAMENT_TYPES } from '@db/data/TournamentTypes';
 import { Users } from './Users';
 
 export type TournamentTypesCodes = typeof TOURNAMENT_TYPES[number];

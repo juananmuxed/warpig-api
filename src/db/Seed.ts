@@ -1,10 +1,10 @@
 import { Op } from 'sequelize';
-
 import { Roles } from '@db/models/Roles';
 import { Users } from '@db/models/Users';
 import { TOURNAMENT_TYPES } from '@db/data/TournamentTypes';
 import { TournamentTypes } from '@db/models/Tournaments';
 import { parse } from 'utils/Parse';
+
 import { ROLES } from './data/Roles';
 
 export const seedDatabase = async () => {

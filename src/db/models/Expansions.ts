@@ -1,8 +1,8 @@
 import {
   DataTypes, InferAttributes, InferCreationAttributes, Model,
 } from 'sequelize';
-
 import { db } from '@db/Connection';
+
 import { Armies } from './Armies';
 
 export interface ExpansionItem extends Record<string, unknown> {
