@@ -1,4 +1,4 @@
-const Orders = ['DESC', 'ASC'] as const;
+export const Orders = ['DESC', 'ASC'] as const;
 
 export type OrderOption = typeof Orders[number] | undefined;
 

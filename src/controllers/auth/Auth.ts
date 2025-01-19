@@ -1,14 +1,16 @@
 import { NextFunction, Request, Response } from 'express';
 import { ValidationError } from 'sequelize';
-import {
-  AuthError, InternalError, InvalidLogin, NotFoundError,
-} from '@models/Errors';
+
 import { Authentication } from '@models/Authentication';
 import { UserItem, Users } from '@db/models/Users';
 import { TypedRequest } from '@db/models/common/ExpressTypes';
 import { Roles } from '@db/models/Roles';
 import { ERRORS } from '@config/data/Errors';
 import { object } from 'utils/Objects';
+import { AuthError } from '@models/errors/AuthError';
+import { InternalError } from '@models/errors/InternalError';
+import { NotFoundError } from '@models/errors/NotFoundError';
+import { InvalidLogin } from '@models/errors/InvalidLogin';
 
 const authentication = new Authentication();
 

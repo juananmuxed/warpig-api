@@ -1,15 +1,16 @@
 import { NextFunction, Request, Response } from 'express';
 import { ValidationError } from 'sequelize';
+
 import { Countries } from '@db/models/Countries';
 import { Games } from '@db/models/Games';
 import { States } from '@db/models/States';
 import { TournamentModel, TournamentTypes, Tournaments } from '@db/models/Tournaments';
 import { UserItem, Users } from '@db/models/Users';
-import { InternalError } from '@models/Errors';
 import {
   getOrder, getPagination, pagedResponse,
 } from '@controllers/utils/Pagination';
 import { PaginationQuery } from '@models/Pagination';
+import { InternalError } from '@models/errors/InternalError';
 
 export const tournamentsInclude = [
   {

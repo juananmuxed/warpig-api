@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { TournamentsController } from '@controllers/tournaments/Tournaments';
 import { AuthenticationController } from '@controllers/auth/Auth';
 

@@ -36,8 +36,7 @@ export function isString(value: unknown): value is string {
   return typeof value === 'string';
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-export function isFunction(value: unknown): value is Function {
+export function isFunction(value: unknown): value is ()=>void {
   return typeof value === 'function';
 }
 

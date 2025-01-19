@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { UsersController } from '@controllers/users/Users';
 import { AuthenticationController } from '@controllers/auth/Auth';
 

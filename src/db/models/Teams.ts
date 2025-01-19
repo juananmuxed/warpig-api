@@ -1,8 +1,8 @@
 import {
   DataTypes, InferAttributes, InferCreationAttributes, Model,
 } from 'sequelize';
-import { db } from '@db/Connection';
 
+import { db } from '@db/Connection';
 import { Users } from './Users';
 
 export interface TeamItem extends Record<string, unknown> {

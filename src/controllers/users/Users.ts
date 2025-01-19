@@ -1,15 +1,17 @@
 import { NextFunction, Request, Response } from 'express';
 import { ValidationError } from 'sequelize';
+
 import {
   getPagination, getOrder, pagedResponse,
 } from '@controllers/utils/Pagination';
 import { UserItem, UserModel, Users } from '@db/models/Users';
-import { InternalError, NotFoundError } from '@models/Errors';
 import { ERRORS } from '@config/data/Errors';
 import { TypedRequest } from '@db/models/common/ExpressTypes';
 import { Roles } from '@db/models/Roles';
 import { Teams } from '@db/models/Teams';
 import { PaginationQuery } from '@models/Pagination';
+import { InternalError } from '@models/errors/InternalError';
+import { NotFoundError } from '@models/errors/NotFoundError';
 
 const include = [
   {

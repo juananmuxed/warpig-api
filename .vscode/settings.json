@@ -33,7 +33,6 @@
     "typescript",
   ],
   "eslint.codeActionsOnSave.mode": "problems",
-  "eslint.experimental.useFlatConfig": true,
   "html.format.enable": false,
   "emmet.triggerExpansionOnTab": true,
   "files.exclude": {

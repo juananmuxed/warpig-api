@@ -1,6 +1,5 @@
 import { Users } from '@db/models/Users';
 import { Roles } from '@db/models/Roles';
-
 import { Games } from './models/Games';
 import { Expansions } from './models/Expansions';
 import { Armies } from './models/Armies';

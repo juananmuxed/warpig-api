@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+
 import { UserItem } from '@db/models/Users';
 
 export type TokenItem = Omit<UserItem, 'password' | 'createdAt' | 'updatedAt'>;

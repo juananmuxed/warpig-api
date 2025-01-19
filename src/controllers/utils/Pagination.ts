@@ -1,5 +1,4 @@
 import { OrderOption } from '@models/Pagination';
-
 import { DEFAULT_PAGINATION } from '../../config/data/DefaultPagination';
 
 export const getPagination = (page?: string, rowsPerPage?: string) => {

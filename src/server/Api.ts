@@ -1,13 +1,14 @@
 import express, { Application } from 'express';
 import swaggerUI from 'swagger-ui-express';
 import cors from 'cors';
+
 import { useLoggerServer } from '@config/UseLoggerServer';
 import { db, dbHost, dbTable } from '@db/Connection';
 import { apiPaths, setRoutes } from '@routes/Main';
 import { syncDatabase } from '@db/Sync';
 import { seedDatabase } from '@db/Seed';
 import { useSwagger } from '@middlewares/Swagger';
-import { useDefaultErrorHandler, useErrorHandler } from '@middlewares/ErrorHandler';
+import { logError, useDefaultErrorHandler, useErrorHandler } from '@middlewares/ErrorHandler';
 
 const log = useLoggerServer();
 
@@ -82,6 +83,7 @@ export class Server {
 
   errorHandler() {
     this.app.use(useDefaultErrorHandler);
+    this.app.use(logError);
     this.app.use(useErrorHandler);
   }
 

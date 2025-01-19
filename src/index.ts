@@ -1,4 +1,5 @@
 import { configDotenv } from 'dotenv';
+
 import { Server } from '@server/Api';
 
 configDotenv();

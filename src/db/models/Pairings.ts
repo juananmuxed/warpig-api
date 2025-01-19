@@ -1,8 +1,8 @@
 import {
   DataTypes, InferAttributes, InferCreationAttributes, Model,
 } from 'sequelize';
-import { db } from '@db/Connection';
 
+import { db } from '@db/Connection';
 import { Rounds } from './Rounds';
 import { Participants } from './Participants';
 import { Criterions } from './Criterion';
