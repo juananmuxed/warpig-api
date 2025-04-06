@@ -11,6 +11,7 @@ import { AuthError } from '@models/errors/AuthError';
 import { InternalError } from '@models/errors/InternalError';
 import { NotFoundError } from '@models/errors/NotFoundError';
 import { InvalidLogin } from '@models/errors/InvalidLogin';
+import { is } from 'utils/Is';
 
 const authentication = new Authentication();
 
@@ -40,7 +41,10 @@ export class AuthenticationController {
         const user = await Users.findOne({ where: { email: jwtPayload.email } });
         const roles = await Roles.findAll({ where: { name: roleName } });
 
-        if (user && user.roleId && roles.some((role) => role.id === user.roleId)) next();
+        if (!is.nullOrUndefined(user)
+          && !is.nullOrUndefined(user.roleId)
+          && roles.some((role) => role.id === user.roleId)
+        ) next();
 
         else next(new AuthError(ERRORS.BAD_PERMISSIONS));
       } catch (error) {
@@ -53,7 +57,8 @@ export class AuthenticationController {
     const { body } = req;
 
     try {
-      if (object.isEmpty(body)) next(new NotFoundError(ERRORS.NOT_FOUND('body')));
+      if (object.isEmpty(body)) next(new NotFoundError(ERRORS.NOT_FOUND('Body')));
+      if (!body.email) next(new NotFoundError(ERRORS.NOT_FOUND('Email property')));
 
       const user = await Users.findOne({ where: { email: body.email } });
 
